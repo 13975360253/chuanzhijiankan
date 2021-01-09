@@ -18,10 +18,10 @@ import java.util.List;
 
 public class QiNiuUtils {
 
-    private static final String ACCESSKEY = "SFEru-42dYFEvmHot4dz1UhsepDmOPDql0AfFt8p";
-    private static final String SECRETKEY = "aCzett8JLbldF42PhQGzw6ymQyWreY4Fu8drPKG3";
-    private static final String BUCKET = "sz106";
-    public static final String DOMAIN = "http://qmld5x5bv.hn-bkt.clouddn.com/";
+    private static final String ACCESSKEY = "QSKQxR6HPes3pTO--vnbsEUC_E50BXbnlZTAtnpe";
+    private static final String SECRETKEY = "25i11BbHpvNmDGh-ftDRGokZ-iikzD-Tg0C_uwKx";
+    private static final String BUCKET = "zhang106";
+    public static final String DOMAIN = "http://qmnvmfl6z.hn-bkt.clouddn.com/";
     private static long logTimestemp4Toke = 0l;
     private static String token = null;
 

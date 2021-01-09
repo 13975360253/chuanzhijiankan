@@ -23,7 +23,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
     /**
      * 添加检查组
      *
-     * @param checkGroup  检查组信息
+     * @param checkGroup   检查组信息
      * @param checkitemIds 选中的检查项id数组
      */
     @Override
@@ -37,7 +37,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         if (null != checkitemIds) {
             for (Integer checkitemId : checkitemIds) {
                 //- 添加检查组与检查项的关系
-                checkGroupDao.addCheckGroupCheckItem(checkGroupId,checkitemId);
+                checkGroupDao.addCheckGroupCheckItem(checkGroupId, checkitemId);
             }
         }
     }
@@ -45,16 +45,17 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 检查组的分页查询
+     *
      * @param queryPageBean
      * @return
      */
     @Override
     public PageResult<CheckGroup> findPage(QueryPageBean queryPageBean) {
-        PageHelper.startPage(queryPageBean.getCurrentPage(),queryPageBean.getPageSize());
+        PageHelper.startPage(queryPageBean.getCurrentPage(), queryPageBean.getPageSize());
         // 条件查询
         if (StringUtil.isNotEmpty(queryPageBean.getQueryString())) {
             // 有查询条件， 模糊查询
-            queryPageBean.setQueryString("%"+queryPageBean.getQueryString()+"%");
+            queryPageBean.setQueryString("%" + queryPageBean.getQueryString() + "%");
         }
         // page extends arrayList
         Page<CheckGroup> page = checkGroupDao.findByCondition(queryPageBean.getQueryString());
@@ -66,6 +67,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 通过id查询检查组
+     *
      * @param id
      * @return
      */
@@ -76,6 +78,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 通过检查组id查询选中的检查项id
+     *
      * @param id
      * @return
      */
@@ -86,6 +89,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     /**
      * 修改检查组
+     *
      * @param checkGroup
      * @param checkitemIds
      */
@@ -99,13 +103,14 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
         for (Integer checkitemId : checkitemIds) {
             //- 添加检查组与检查项的关系
-            checkGroupDao.addCheckGroupCheckItem(checkGroup.getId(),checkitemId);
+            checkGroupDao.addCheckGroupCheckItem(checkGroup.getId(), checkitemId);
         }
     }
 
 
     /**
      * 通过id删除检查组
+     *
      * @param id
      * @throws MyException
      */
@@ -122,6 +127,16 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         // 删除检测组
         checkGroupDao.deleteById(id);
 
+    }
+
+    /**
+     * 查询所有的检查组
+     *
+     * @return
+     */
+    @Override
+    public List<CheckGroup> findAll() {
+        return checkGroupDao.fingAll();
     }
 
 

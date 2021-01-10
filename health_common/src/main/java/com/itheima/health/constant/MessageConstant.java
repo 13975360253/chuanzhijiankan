@@ -27,6 +27,8 @@ public interface MessageConstant {
     static final String PIC_UPLOAD_FAIL = "图片上传失败";
     static final String ADD_SETMEAL_FAIL = "新增套餐失败";
     static final String ADD_SETMEAL_SUCCESS = "新增套餐成功";
+    static final String DELETE_SETMEAL_SUCCESS = "删除套餐成功";
+    static final String DELETE_SETMEAL_FAIL = "删除套餐失败";
     static final String IMPORT_ORDERSETTING_FAIL = "批量导入预约设置数据失败";
     static final String IMPORT_ORDERSETTING_SUCCESS = "批量导入预约设置数据成功";
     static final String GET_ORDERSETTING_SUCCESS = "获取预约设置数据成功";

@@ -39,11 +39,19 @@
         price=#{price},
         remark=#{remark},
         attention=#{attention},
-        img=#{attention}
+        img=#{img}
         where id=#{id}
     </update>
 
     <delete id="deledeSetmealCheckgroup" parameterType="int">
         delete from t_setmeal_checkgroup where setmeal_id=#{id}
+    </delete>
+
+    <select id="findCountBySetmealId" parameterType="int" resultType="int">
+        select count(1) from t_order where setmeal_id=#{id}
+    </select>
+
+    <delete id="deleteById" parameterType="int">
+        delete from t_setmeal where id=#{id}
     </delete>
 </mapper>

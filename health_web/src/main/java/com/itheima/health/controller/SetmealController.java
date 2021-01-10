@@ -95,7 +95,11 @@ public class SetmealController {
     @GetMapping("/findById")
     public Result findById(int id) {
         Setmeal setmeal = setmealSerivce.findById(id);
-        return new Result(true,MessageConstant.QUERY_SETMEAL_SUCCESS,setmeal);
+        // 构建前端需要的数据, 还要有域名
+        Map<String,Object> map = new HashMap<>(2);
+        map.put("setmeal",setmeal);
+        map.put("domain",QiNiuUtils.DOMAIN);
+        return new Result(true, MessageConstant.QUERY_SETMEAL_SUCCESS, map);
     }
 
     /**
@@ -119,6 +123,17 @@ public class SetmealController {
     public Result update(@RequestBody Setmeal setmeal, Integer[] checkgroupIds) {
         setmealSerivce.update(setmeal,checkgroupIds);
         return new Result(true,MessageConstant.EDIT_SETMEAL_SUCCESS);
+    }
+
+    /**
+     * 删除套餐
+     * @param id
+     * @return
+     */
+    @PostMapping("/deleteById")
+    public Result deleteById(int id) {
+        setmealSerivce.deleteById(id);
+        return new Result(true,MessageConstant.DELETE_SETMEAL_SUCCESS);
     }
 
 

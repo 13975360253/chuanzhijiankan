@@ -2,6 +2,7 @@ package com.itheima.health.service;
 
 import com.itheima.health.entity.PageResult;
 import com.itheima.health.entity.QueryPageBean;
+import com.itheima.health.exception.MyException;
 import com.itheima.health.pojo.Setmeal;
 
 import java.util.List;
@@ -41,4 +42,10 @@ public interface SetmealSerivce {
      * @param checkgroupIds
      */
     void update(Setmeal setmeal, Integer[] checkgroupIds);
+
+    /**
+     * 删除套餐
+     * @param id
+     */
+    void deleteById(int id) throws MyException;
 }

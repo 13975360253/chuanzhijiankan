@@ -9,17 +9,17 @@ import com.itheima.health.utils.POIUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 @RequestMapping("/ordersetting")
 public class OrderSettingController {
     private static final Logger LOG = LoggerFactory.getLogger(OrderSettingController.class);
@@ -58,6 +58,32 @@ public class OrderSettingController {
             LOG.error("导入预约设置失败",e);
             return new Result(false, MessageConstant.IMPORT_ORDERSETTING_FAIL);
         }
+    }
+
+
+    /**
+     * 查询预约设置表当月的数据
+     * @param month
+     * @return
+     */
+    @GetMapping("/getOrderSettingByMonth")
+    public Result getOrderSettingByMonth(String month) {
+        List<Map<String,Integer>> data = orderSettingService.getOrderSettingByMonth(month);
+        return new Result(true,MessageConstant.GET_ORDERSETTING_SUCCESS,data);
+
+    }
+
+
+    /**
+     * 通过日期设置可预约的最大数
+     * @param orderSetting
+     * @return
+     */
+    @PostMapping("/editNumberByDate")
+    public Result editNumberByDate(@RequestBody OrderSetting orderSetting) {
+        // 调用服务更新
+        orderSettingService.editNumberByDate(orderSetting);
+        return new Result(true,MessageConstant.ORDERSETTING_SUCCESS);
     }
 
 }

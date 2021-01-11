@@ -2,6 +2,7 @@ package com.itheima.health.dao;
 
 import com.github.pagehelper.Page;
 import com.itheima.health.pojo.CheckGroup;
+import com.itheima.health.pojo.CheckItem;
 import com.itheima.health.pojo.Setmeal;
 import org.apache.ibatis.annotations.Param;
 
@@ -66,4 +67,37 @@ public interface SetmealDao {
      * @param id
      */
     void deleteById(int id);
+
+    /**
+     * 查询数据库所有的图片
+     * @return
+     */
+    List<String> findImgs();
+
+    /**
+     * 查询所有的套餐
+     * @return
+     */
+    List<Setmeal> findAll();
+
+    /**
+     * 查询套餐下的检查组信息
+     * @param id
+     * @return
+     */
+    List<CheckGroup> findCheckGroupListBySetmealId(int id);
+
+    /**
+     * 查询检查组下的检查项信息
+     * @param id
+     * @return
+     */
+    List<CheckItem> findCheckItemByCheckGroupId(Integer id);
+
+    /**
+     * 调用服务查询套餐详情1
+     * @param id
+     * @return
+     */
+    Setmeal findDetailById(int id);
 }

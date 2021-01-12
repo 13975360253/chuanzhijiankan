@@ -20,4 +20,9 @@
         select CAST(DATE_FORMAT(orderdate,'%d') AS SIGNED) date,number,reservations from t_ordersetting where orderDate like #{month}
     </select>
 
+    <!--更新已预约人数-->
+    <update id="editReservationsByOrderDate" parameterType="OrderSetting">
+        update t_ordersetting set reservations = reservations+1 where orderDate = #{orderDate,jdbcType=DATE}
+        and reservations &lt; number
+    </update>
 </mapper>

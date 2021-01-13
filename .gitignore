@@ -27,5 +27,7 @@ hs_err_pid*
 *.iml
 .idea/
 target/
+SMSUtils.java
+SendSms.java
 
 

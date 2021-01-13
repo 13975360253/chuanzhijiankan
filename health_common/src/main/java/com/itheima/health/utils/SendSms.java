@@ -26,7 +26,7 @@ public class SendSms
            * 您也可以直接在代码中写入密钥对，但需谨防泄露，不要将代码复制、上传或者分享给他人
            * CAM 密钥查询：https://console.cloud.tencent.com/cam/capi
            */
-          Credential cred = new Credential("AKIDXruRhks0KN8cQxiCtQgfNVNyIL7gezQb", "3pOM3UfFYhZARSCgFYZKnTu500kV0EVa");
+          Credential cred = new Credential("", "");
            // 实例化一个 http 选项，可选，无特殊需求时可以跳过
           HttpProfile httpProfile = new HttpProfile();
           // 设置代理
